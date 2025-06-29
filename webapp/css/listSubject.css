@@ -1,0 +1,285 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  font-size: 16px;
+}
+
+/* Header */
+header {
+  background-color: #8bc34a;
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 60px;
+}
+
+.toggle-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: -250px;
+  width: 250px;
+  height: calc(100% - 60px);
+  background-color: #6b9c3d;
+  padding-top: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar .profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar .profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar .profile h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: white;
+}
+
+.sidebar .profile p {
+  font-size: 14px;
+  color: #d4ffd0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar a:hover {
+  background-color: #55822f;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #7fb857;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  padding: 12px 35px;
+  font-weight: normal;
+  border: none;
+}
+
+.dropdown-content.show {
+  display: flex;
+}
+
+/* Main Container */
+.container {
+  background: #eaeaea;
+  padding: 40px 30px;
+  border-radius: 8px;
+  margin: 80px auto 30px;
+  max-width: 1100px;
+  width: 90%;
+  transition: margin-left 0.3s ease;
+}
+
+/* Header Row: Title and Button */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Title */
+.header-row h2 {
+  color: #55822f;
+  font-size: 2rem;
+}
+
+/* Add Button */
+.btn-add {
+  background-color: #8bc34a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #6b9c3d;
+}
+
+/* Subject Grid */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.subject-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  border-left: 5px solid #8bc34a;
+}
+
+.subject-card:hover {
+  transform: translateY(-5px);
+}
+
+.subject-card i.fa-book {
+  font-size: 48px;
+  color: #55822f;
+  margin-bottom: 15px;
+}
+
+.subject-card p {
+  margin: 8px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-actions {
+  margin-top: 20px;
+}
+
+.card-actions a {
+  display: inline-block;
+  margin: 6px 5px 0;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-edit {
+  background-color: #f1c40f;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #d4ac0d;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.placeholder {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  grid-column: 1 / -1;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  border-left: 6px solid #8bc34a;
+}
+
+/* Sidebar push effect on desktop */
+@media (min-width: 768px) {
+  .sidebar.active ~ .container {
+    margin-left: 250px;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .header-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .btn-add {
+    width: 100%;
+  }
+
+  .subject-card {
+    padding: 18px;
+  }
+
+  .subject-card i.fa-book {
+    font-size: 40px;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar {
+    width: 100%;
+    left: -100%;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .dropdown-content a {
+    padding-left: 25px;
+  }
+}

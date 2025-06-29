@@ -1,0 +1,501 @@
+/* Reset & base styles */
+html {
+  scroll-behavior: smooth;
+  font-size: 18px; /* base font size increased for user-friendliness */
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f7f7ef;
+  color: #333;
+  padding-top: 60px; /* increased to fit taller header */
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 1rem; /* 18px from html */
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #88c34e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px; /* taller header */
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Header logo image */
+.navbar img {
+  max-height: 40px;
+  user-select: none;
+}
+
+/* Sidebar toggle button */
+.navSidebar {
+  font-size: 28px; /* bigger toggle icon */
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  padding: 6px 10px; /* easier to click */
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.navSidebar:hover,
+.navSidebar:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+.navSidebar:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-weight: 600;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 1.7rem; /* larger logo text */
+  user-select: none;
+}
+
+.navbar span {
+  font-weight: 700;
+  color: #e91e63;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px; /* slightly wider to match padding */
+  height: 100vh;
+  width: 260px;
+  background-color: #88c34e;
+  display: flex;
+  flex-direction: column;
+  padding-top: 90px; /* space for taller header */
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.show {
+  left: 0;
+}
+
+/* Profile section */
+.profile {
+  margin: 15px 0 35px 0;
+  text-align: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 90px; /* bigger profile image */
+  height: 90px;
+  object-fit: cover;
+  border: 3px solid #d0e8a6;
+  margin-bottom: 12px;
+}
+
+.profile h3 {
+  font-size: 1.3rem; /* bigger name */
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.profile p {
+  font-size: 1rem; /* readable role text */
+  color: #d0e8a6;
+  letter-spacing: 0.03em;
+}
+
+/* Sidebar links */
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem; /* larger link text */
+  font-weight: 600;
+}
+
+.sidebar-links.bottom-links {
+  margin-top: auto; /* push bottom links to bottom */
+}
+
+.sidebar-links.top-links li,
+.sidebar-links.bottom-links li {
+  flex-grow: 1;
+  display: flex;
+}
+
+.sidebar-links li a {
+  display: flex;
+  align-items: center;
+  padding: 14px 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.15rem;
+  border-left: 5px solid transparent;
+  width: 100%;
+  transition: background-color 0.3s, border-left-color 0.3s;
+  letter-spacing: 0.02em;
+  min-height: 44px; /* ensure good touch size */
+}
+
+.sidebar-links li a i {
+  margin-right: 18px;
+  color: #d0e8a6;
+  min-width: 26px;
+  text-align: center;
+  font-size: 20px; /* bigger icons */
+}
+
+/* Hover and focus */
+.sidebar-links li a:hover,
+.sidebar-links li a:focus {
+  background-color: #6fa42e;
+  border-left: 5px solid #d0e8a6;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+
+.sidebar-links li a:focus {
+  outline: 3px solid #d0e8a6;
+  outline-offset: 2px;
+}
+
+/* Active link style */
+.sidebar-links li a.active {
+  background-color: #6fa42e;
+  border-left-color: #fff;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Separator line */
+._separator_1e1cy_1 {
+  width: 90%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 25px auto;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Dashboard container */
+.dashboard {
+  padding: 45px 25px;
+  max-width: 1000px;
+  margin: 70px auto 30px auto; /* top margin for fixed header */
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.1rem; /* slightly larger base font */
+  line-height: 1.6;
+}
+
+.dashboard.shifted {
+  transform: translateX(260px); /* slide right by sidebar width */
+}
+
+/* Welcome box */
+.welcome-box {
+  background-color: #fcb6cf;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.welcome-text h2 {
+  margin: 0;
+  font-size: 1.4rem; /* bigger greeting */
+  color: #111;
+  font-weight: 700;
+}
+
+.welcome-text p {
+  margin-top: 10px;
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.5;
+  max-width: 550px;
+}
+
+.welcome-image img {
+  width: 90px;
+  height: auto;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat {
+  flex: 1 1 32%;
+  text-align: center;
+  padding: 20px;
+  border-radius: 14px;
+  border: 2.5px dashed #ccc;
+  font-size: 1.05rem;
+  background-color: #fff;
+  min-width: 180px;
+  font-weight: 600;
+}
+
+.stat.green {
+  background-color: #c2f0a0;
+  border-color: #4caf50;
+}
+
+.stat.pink {
+  background-color: #ffc1dc;
+  border-color: #e91e63;
+}
+
+.stat i {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #4caf50;
+}
+
+/* Main section */
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.left-section,
+.right-section {
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 320px;
+}
+
+/* Headings */
+.quotes h3,
+.calendar h3,
+.birthday h3,
+.gallery h3 {
+  margin-bottom: 14px;
+  font-size: 1.25rem;
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+/* Quote box and tips */
+.quote-box,
+.tips p,
+.gallery-box {
+  background-color: #fff;
+  padding: 15px 18px;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* Calendar */
+.calendar-box {
+  background-color: #4caf50;
+  border-radius: 12px;
+  min-height: 90px;
+  padding: 18px;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Birthday box */
+.birthday-box {
+  background-color: #a0a0a0;
+  padding: 18px;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.birthday-box img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-top: 14px;
+  object-fit: cover;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: #eaeaea;
+  padding: 18px;
+  border-radius: 12px;
+  flex: 1 1 48%;
+  text-align: center;
+  box-shadow: 0 0 6px #ccc;
+  text-decoration: none;
+  color: #2e7d32;
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  min-width: 160px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #dcdcdc;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:focus {
+  outline: 3px solid #4caf50;
+  outline-offset: 3px;
+}
+
+.btn i {
+  font-size: 1.7rem;
+  color: #4caf50;
+  margin-bottom: 8px;
+}
+
+.btn p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #2e7d32;
+}
+
+/* Gallery */
+.gallery {
+  margin-bottom: 50px;
+}
+
+.gallery-box {
+  background-color: #ddd;
+  height: 160px;
+  border-radius: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px; /* scale down a bit on smaller devices */
+  }
+
+  .stats,
+  .main-section,
+  .btn-row {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .btn {
+    flex: 1 1 100%;
+    min-width: auto;
+  }
+
+  .welcome-box {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .welcome-text,
+  .welcome-image {
+    width: 100%;
+  }
+
+  .welcome-image img {
+    margin-top: 12px;
+    width: 90px;
+    height: auto;
+  }
+
+  .stat {
+    padding: 16px;
+    flex: 1 1 100%;
+  }
+
+  .sidebar-links li a {
+    font-size: 1.05rem;
+    padding: 12px 20px;
+  }
+
+  .sidebar-links li a i {
+    font-size: 18px;
+    margin-right: 14px;
+  }
+}
